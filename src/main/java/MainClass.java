@@ -150,7 +150,8 @@ public class MainClass {private static Cluster cluster;
 
     private int follow (String username) {
         // prekondisi
-        if (user == null) return -1;
+        if (user == null || user.getUsername().equals(username)) return -1;
+
         // body
         ResultSet results = session.execute("SELECT * FROM users WHERE username ='" + username + "'");
         if (results.one() == null) {
